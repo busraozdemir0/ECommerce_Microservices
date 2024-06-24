@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce.Services.CouponAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240624111058_SeedCouponTables")]
-    partial class SeedCouponTables
+    [Migration("20240624144021_init_db")]
+    partial class init_db
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
