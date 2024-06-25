@@ -1,4 +1,7 @@
 using ECommerce.Services.AuthAPI.Data;
+using ECommerce.Services.AuthAPI.Models;
+using ECommerce.Services.AuthAPI.Service;
+using ECommerce.Services.AuthAPI.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,10 +13,15 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
+
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions"));
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
