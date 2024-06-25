@@ -53,7 +53,8 @@ namespace ECommerce.Services.AuthAPI.Service
             }
 
             // Eger user bulunursa, JWT Token uretilecek
-            var token = _jwtTokenGenerator.GenerateToken(user);
+            var roles = await _userManager.GetRolesAsync(user); // Giris yapan kullanicinin sahip oldugu roller
+            var token = _jwtTokenGenerator.GenerateToken(user, roles);
 
             UserDTO userDTO = new()
             {
