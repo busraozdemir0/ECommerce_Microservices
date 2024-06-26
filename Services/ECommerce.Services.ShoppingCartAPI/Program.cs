@@ -1,7 +1,9 @@
 using AutoMapper;
-using ECommerce.Services.ProductAPI;
-using ECommerce.Services.ProductAPI.Data;
-using ECommerce.Services.ProductAPI.Extensions;
+using ECommerce.Services.ShoppingCartAPI;
+using ECommerce.Services.ShoppingCartAPI.Data;
+using ECommerce.Services.ShoppingCartAPI.Extensions;
+using ECommerce.Services.ShoppingCartAPI.Service;
+using ECommerce.Services.ShoppingCartAPI.Service.IService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -17,6 +19,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// HttpClient ozelligi API ile iletisim kurmak icin yapilandirilir.
+// ServiceUrls:ProductAPI anahtarina karsilik gelen URL olarak ayarlar. Bu yapilandirma ProductAPI ile iletisim kurmak icin kullanilacak HTTP istemcisinin temel URL'sini belirler
+builder.Services.AddHttpClient("Product", u => u.BaseAddress =
+    new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
+builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddHttpClient("Coupon", u => u.BaseAddress =
+    new Uri(builder.Configuration["ServiceUrls:CouponAPI"]));
+builder.Services.AddScoped<ICouponService, CouponService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
