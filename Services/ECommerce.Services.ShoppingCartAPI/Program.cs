@@ -1,4 +1,5 @@
 using AutoMapper;
+using ECommerce.MessageBus;
 using ECommerce.Services.ShoppingCartAPI;
 using ECommerce.Services.ShoppingCartAPI.Data;
 using ECommerce.Services.ShoppingCartAPI.Extensions;
@@ -7,6 +8,7 @@ using ECommerce.Services.ShoppingCartAPI.Service.IService;
 using ECommerce.Services.ShoppingCartAPI.Utility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Http;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +35,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddHttpClient("Coupon", u => u.BaseAddress =
     new Uri(builder.Configuration["ServiceUrls:CouponAPI"])).AddHttpMessageHandler<BackendApiAuthenticationHttpClientHandler>();
 builder.Services.AddScoped<ICouponService, CouponService>();
+
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
