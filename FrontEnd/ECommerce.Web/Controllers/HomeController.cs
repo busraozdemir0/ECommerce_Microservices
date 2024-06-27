@@ -1,6 +1,7 @@
 using ECommerce.Services.Models;
 using ECommerce.Web.Models;
 using ECommerce.Web.Service.IService;
+using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -11,9 +12,11 @@ namespace ECommerce.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IProductService _productService;
-        public HomeController(IProductService productService)
+        private readonly ICartService _cartService;
+        public HomeController(IProductService productService, ICartService cartService)
         {
             _productService = productService;
+            _cartService = cartService;
         }
 
         public async Task<IActionResult> Index()
@@ -51,6 +54,48 @@ namespace ECommerce.Web.Controllers
             }
 
             return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ActionName("ProductDetails")]
+        public async Task<IActionResult> ProductDetails(ProductDTO productDTO)
+        {
+            // ** Ana sayfada herhangi bir urun icin sepete ekle butonuna basildiginda calisacak olan action
+
+            CartDTO cartDTO = new CartDTO()
+            {
+                // CartDTO icerisinde yer alan CartHeader'daki UserId bilgisini sisteme giris yapan kullanicinin id'si olarak ata
+                CartHeader = new CartHeaderDTO
+                {
+                    UserId = User.Claims.Where(u => u.Type == JwtClaimTypes.Subject)?.FirstOrDefault()?.Value
+                }
+            };
+
+            // Gelen productDTO nesnesindeki Count ve ProductId bilgileri ile cartDetails olustur
+            CartDetailsDTO cartDetails = new CartDetailsDTO()
+            {
+                Count = productDTO.Count,
+                ProductId = productDTO.ProductId,
+            };
+
+            // Eklenen Urun sepete yani CartDetails listesine aktariliyor
+            List<CartDetailsDTO> cartDetailsDTOs = new() { cartDetails };
+            cartDTO.CartDetails = cartDetailsDTOs;
+
+            ResponseDTO? response = await _cartService.UpsertCartAsync(cartDTO);
+
+            if (response != null && response.IsSuccess)
+            {
+                TempData["success"] = "Item has been added to the Shopping Cart";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["error"] = response?.Message;
+            }
+
+            return View(productDTO);
         }
 
         public IActionResult Privacy()

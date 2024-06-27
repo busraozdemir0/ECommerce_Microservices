@@ -43,10 +43,10 @@ namespace ECommerce.Services.ShoppingCartAPI.Controllers
                     .Where(u => u.CartHeaderId == cart.CartHeader.CartHeaderId));
 
                 // Sepette olan tum urunleri getir.
-                IEnumerable<ProductDTO> productDTOs = await _productService.GetProducts(); 
+                IEnumerable<ProductDTO> productDTOs = await _productService.GetProducts();
 
                 // Sepetin tuttugu toplam ucret icin sepette yer alan tum urunleri miktarlari ile carpiyoruz. Ve her bir urun icin sonucu CartTotal degiskeninde topluyoruz.
-                foreach(var item in cart.CartDetails)
+                foreach (var item in cart.CartDetails)
                 {
                     // Sepette olan urunler icerisindeki ProductId'si CartDetails'teki ProductId'ye esit olani o an uzerinde bulunan item'in Product'ina ata.
                     item.Product = productDTOs.FirstOrDefault(u => u.ProductId == item.ProductId);
@@ -57,7 +57,7 @@ namespace ECommerce.Services.ShoppingCartAPI.Controllers
                 if (!string.IsNullOrEmpty(cart.CartHeader.CouponCode))
                 {
                     CouponDTO coupon = await _couponService.GetCoupon(cart.CartHeader.CouponCode);
-                    if(coupon!=null && cart.CartHeader.CartTotal > coupon.MinAmount)
+                    if (coupon != null && cart.CartHeader.CartTotal > coupon.MinAmount)
                     {
                         cart.CartHeader.CartTotal -= coupon.DiscountAmount;  // Kupondaki indirim miktari kadar toplam fiyattan cikar
                         cart.CartHeader.Discount = coupon.DiscountAmount;
@@ -122,7 +122,8 @@ namespace ECommerce.Services.ShoppingCartAPI.Controllers
                 // Giris yapan kullanicinin sepette bir urunu var mi
                 var cartHeaderFromDb = await _db.CartHeaders.AsNoTracking()
                     .FirstOrDefaultAsync(u => u.UserId == cartDTO.CartHeader.UserId);
-                if (cartHeaderFromDb == null) // Eger baslik bos ise
+
+                if (cartHeaderFromDb == null) // Eger baslik bos ise (yani kullanicinin CartHeader tablosunda bilgisi/UserId yoksa)
                 {
                     // Sepet basligi ve detaylari olustur (CartHeader and CartDetails)
                     CartHeader cartHeader = _mapper.Map<CartHeader>(cartDTO.CartHeader);
@@ -140,9 +141,10 @@ namespace ECommerce.Services.ShoppingCartAPI.Controllers
                     var cartDetailsFromDb = await _db.CartDetails.AsNoTracking().FirstOrDefaultAsync(
                         u => u.ProductId == cartDTO.CartDetails.First().ProductId &&
                         u.CartHeaderId == cartHeaderFromDb.CartHeaderId);
+
                     if (cartDetailsFromDb == null) // Eger ayni urun sepette yoksa
                     {
-                        // CartDetails olustur
+                        // CartDetails olustur / yani urunu sepete ekle
                         cartDTO.CartDetails.First().CartHeaderId = cartHeaderFromDb.CartHeaderId;
                         _db.CartDetails.Add(_mapper.Map<CartDetails>(cartDTO.CartDetails.First()));
                         await _db.SaveChangesAsync();
