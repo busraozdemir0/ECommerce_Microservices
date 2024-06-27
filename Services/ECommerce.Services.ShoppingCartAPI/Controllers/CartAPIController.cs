@@ -124,15 +124,14 @@ namespace ECommerce.Services.ShoppingCartAPI.Controllers
         {
             try
             {
-                await _messageBus.PublishMessage(cartDTO, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCart"));
+                await _messageBus.PublishMessage(cartDTO, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue"));
                 _response.Result = true;
             }
             catch (Exception ex)
             {
-                _response.Message = ex.Message.ToString();
                 _response.IsSuccess = false;
+                _response.Message = ex.ToString();
             }
-
             return _response;
         }
 

@@ -6,7 +6,7 @@
 
 @if (Model.CartHeader != null && Model.CartDetails?.Count() > 0)
 {
-    <form asp-action="EmailCart" method="post">
+    <form method="post" asp-action="EmailCart" >
         <br />
         <input asp-for="CartHeader.UserId" hidden />
         <input asp-for="CartHeader.CartHeaderId" hidden />
@@ -93,7 +93,7 @@
                         <button type="submit" class="btn btn-outline-danger form-control"> Email Cart </button>
                     </div>
                     <div class="col-6 col-md-3 offset-md-6">
-                        <a asp-action="Checkout" class="btn btn-success form-control">Looks Good? </a>
+                        <button disabled class="btn btn-success form-control"> Checkout (Comming Soon!) </button>
                     </div>
                 </div>
             </div>
