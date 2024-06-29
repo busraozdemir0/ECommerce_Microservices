@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<ProductDTO>
 
 @{
-	ViewData["Title"] = "Product Index";
+	ViewData["Title"] = "Ürünler";
 }
 
 <div class="card shadow border-0 mt-4">
 	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
 		<div class="row">
 			<div class="col-12 text-center">
-				<h1 class="text-white">Products List</h1>
+				<h1 class="text-white">Ürün Listesi</h1>
 			</div>
 		</div>
 	</div>
@@ -17,20 +17,20 @@
 			<div class="col-6">
 			</div>
 			<div class="col-6 text-end">
-				<a asp-action="ProductCreate" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Create New Product</a>
+				<a asp-action="ProductCreate" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Yeni ürün Ekle</a>
 			</div>
 		</div>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>
-						Name
+						Adı
 					</th>
 					<th>
-						Category Name
+						Kategori Adı
 					</th>
 					<th>
-						Price
+						Fiyat
 					</th>
 					<th></th>
 				</tr>

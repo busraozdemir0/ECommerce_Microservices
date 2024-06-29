@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProductDTO>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Ana Sayfa";
 }
 
 <form>
@@ -12,17 +12,25 @@
                 <div class="p-0 my-3 border rounded">
                     <div class="card">
                         <h3 class="card-title text-white-50 text-center py-2">@product.Name</h3>
-                        <img src="@product.ImageUrl" class="card-img-top">
+                        <img src="@product.ImageUrl" class="card-img-top" height="250px">
                         <div class="card-body">
                             <div class="d-flex justify-content-between py-2">
                                 <span class="text-danger" style="font-size:20px;">@string.Format("{0:c}", product.Price)</span>
                                 <span class="badge bg-warning text-white p-2">@product.CategoryName</span>
                             </div>
-                            <p class="card-text">@Html.Raw(product.Description)</p>
+                            @if(product.Description.Length > 50)
+                            {
+                                <p class="card-text">@Html.Raw(product.Description.Substring(0, 50)) ...</p>
+                            }
+                            else
+                            {
+                                <p class="card-text">@Html.Raw(product.Description)</p>
+                            }
+                           
                             <div class="row">
                                 <div class="col">
                                     <a asp-action="ProductDetails" asp-route-productId="@product.ProductId"
-                                       class="btn btn-success form-control">Details</a>
+                                       class="btn btn-success form-control">Detaylar</a>
                                 </div>
                             </div>
                         </div>

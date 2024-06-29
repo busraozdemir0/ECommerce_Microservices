@@ -29,7 +29,7 @@ namespace ECommerce.Web.Controllers
             ResponseDTO response = await _cartService.RemoveFromCartAsync(cartDetailsId); // Sepette olan ve silinmek istenen urunu silecek
             if (response != null & response.IsSuccess)
             {
-                TempData["success"] = "Cart updated successfully.";
+                TempData["success"] = "Sepetiniz başarıyla güncellendi.";
                 return RedirectToAction(nameof(CartIndex));
             }
             return View();
@@ -41,7 +41,7 @@ namespace ECommerce.Web.Controllers
             ResponseDTO response = await _cartService.ApplyCouponAsync(cartDTO);
             if (response != null & response.IsSuccess)
             {
-                TempData["success"] = "Cart updated successfully.";
+                TempData["success"] = "Kupon başarıyla uygulandı.";
                 return RedirectToAction(nameof(CartIndex));
             }
             return View();
@@ -54,7 +54,7 @@ namespace ECommerce.Web.Controllers
             ResponseDTO response = await _cartService.ApplyCouponAsync(cartDTO);
             if (response != null & response.IsSuccess)
             {
-                TempData["success"] = "Cart updated successfully.";
+                TempData["success"] = "Kupon başarıyla kaldırıldı.";
                 return RedirectToAction(nameof(CartIndex));
             }
             return View();
@@ -68,7 +68,7 @@ namespace ECommerce.Web.Controllers
             ResponseDTO response = await _cartService.EmailCart(cartDTO);
             if (response != null & response.IsSuccess)
             {
-                TempData["success"] = "Email will be processed and sent shortly.";
+                TempData["success"] = "E-posta kısa süre içinde işlenecek ve gönderilecek.";
                 return RedirectToAction(nameof(CartIndex));
             }
             return View();

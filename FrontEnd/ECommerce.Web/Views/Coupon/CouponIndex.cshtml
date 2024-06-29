@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<CouponDTO>
 
 @{
-	ViewData["Title"] = "Coupon Index";
+	ViewData["Title"] = "Kuponlar";
 }
 
 <div class="card shadow border-0 mt-4">
 	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
 		<div class="row">
 			<div class="col-12 text-center">
-				<h1 class="text-white">Coupons List</h1>
+				<h1 class="text-white">Kupon Listesi</h1>
 			</div>
 		</div>
 	</div>
@@ -17,7 +17,7 @@
 			<div class="col-6">
 			</div>
 			<div class="col-6 text-end">
-				<a asp-action="CouponCreate" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Create New Coupon</a>
+				<a asp-action="CouponCreate" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Yeni Kupon Oluştur</a>
 
 			</div>
 		</div>
@@ -25,13 +25,13 @@
 			<thead>
 				<tr>
 					<th>
-						Coupon Code
+						Kupon Kodu
 					</th>
 					<th>
-						Discount Amount
+						İndirim Miktarı
 					</th>
 					<th>
-						Minimum Amount
+						Minimum Miktar
 					</th>
 					<th></th>
 				</tr>

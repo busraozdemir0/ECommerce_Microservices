@@ -1,32 +1,32 @@
 ﻿@model CouponDTO
 
 @{
-    ViewData["Title"] = "Coupon Create";
+    ViewData["Title"] = "Kupon Oluştur";
 }
 
 <form asp-action="CouponCreate">
     <br />
     <div class="container border p-3">
-        <h1 class="text-white text-center">Create Coupon</h1>
+        <h1 class="text-white text-center">Kupon Oluşturma Sayfası</h1>
 
         <hr />
         <div class="row">
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;"> Coupon Code</label>
+                <label class="control-label pt-2" style="font-size:20px;"> Kupon Kodu</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="CouponCode" class="form-control" />
                 <span asp-validation-for="CouponCode" class="text-danger"></span>
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Discount Amount</label>
+                <label class="control-label pt-2" style="font-size:20px;">İndirim Miktarı</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="DiscountAmount" class="form-control" />
                 <span asp-validation-for="DiscountAmount" class="text-danger"></span>
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Minimum Amount</label>
+                <label class="control-label pt-2" style="font-size:20px;">Minimum Miktar</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="MinAmount" class="form-control" />
@@ -35,10 +35,10 @@
 
             <div class="col-5 offset-2">
 
-                <a asp-action="CouponIndex" class="btn-primary btn form-control ">Back to List</a>
+                <a asp-action="CouponIndex" class="btn-primary btn form-control ">Listeye Geri Dön</a>
             </div>
             <div class="col-5">
-                <input type="submit" value="Create" class="btn btn-success form-control" />
+                <input type="submit" value="Oluştur" class="btn btn-success form-control" />
             </div>
         </div>
         <div>

@@ -22,19 +22,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Content Management
+                                İçerik Yönetimi
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-controller="Coupon" asp-action="CouponIndex">Coupon</a></li>
+                                <li><a class="dropdown-item" asp-controller="Coupon" asp-action="CouponIndex">Kuponlar</a></li>
                                
-                                <li><a class="dropdown-item" asp-controller="Product" asp-action="ProductIndex">Product</a></li>
+                                <li><a class="dropdown-item" asp-controller="Product" asp-action="ProductIndex">Ürünler</a></li>
                                 <li><hr class="dropdown-divider"></li>
                             </ul>
                         </li>
@@ -48,19 +45,19 @@
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-controller="Auth" asp-action="Login">Giriş Yap</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="Register">Register</a>
+                                <a class="nav-link" asp-controller="Auth" asp-action="Register">Kayıt Ol</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Hello @User.Identity.Name</a> @* Olusturulan kimlik ve identity yardimiyla kullanicinin adini cekiyoruz *@
+                                <a class="nav-link" href="#">Hoşgeldin @User.Identity.Name</a> @* Olusturulan kimlik ve identity yardimiyla kullanicinin adini cekiyoruz *@
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="Logout">Logout</a>
+                                <a class="nav-link" asp-controller="Auth" asp-action="Logout">Çıkış Yap</a>
                             </li>
                         }
                     </ul>

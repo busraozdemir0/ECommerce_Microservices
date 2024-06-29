@@ -1,45 +1,45 @@
 ﻿@model ProductDTO
 
 @{
-	ViewData["Title"] = "Product Create";
+	ViewData["Title"] = "Ürün Ekle";
 }
 
 <form asp-action="ProductCreate">
     <br />
     <div class="container border p-3">
-        <h1 class="text-white text-center">Create Product</h1>
+        <h1 class="text-white text-center">Ürün Ekleme Sayfası</h1>
         <hr />
         <div class="row">
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;"> Name</label>
+                <label class="control-label pt-2" style="font-size:20px;"> Adı</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Category Name</label>
+                <label class="control-label pt-2" style="font-size:20px;">Kategori Adı</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="CategoryName" class="form-control" />
                 <span asp-validation-for="CategoryName" class="text-danger"></span>
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Description</label>
+                <label class="control-label pt-2" style="font-size:20px;">Açıklama</label>
             </div>
             <div class="col-10 pb-3">
                 <textarea asp-for="Description" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Price</label>
+                <label class="control-label pt-2" style="font-size:20px;">Fiyat</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">ImageUrl</label>
+                <label class="control-label pt-2" style="font-size:20px;">Görsel Yolu</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="ImageUrl" class="form-control" />
@@ -47,11 +47,10 @@
             </div>
 
             <div class="col-5 offset-2">
-
-                <a asp-action="ProductIndex" class="btn-primary btn form-control ">Back to List</a>
+                <a asp-action="ProductIndex" class="btn-primary btn form-control ">Listeye Geri Dön</a>
             </div>
             <div class="col-5">
-                <input type="submit" value="Create" class="btn btn-success form-control" />
+                <input type="submit" value="Ekle" class="btn btn-success form-control" />
             </div>
         </div>
         <div>

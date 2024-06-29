@@ -87,7 +87,7 @@ namespace ECommerce.Web.Controllers
 
             if (response != null && response.IsSuccess)
             {
-                TempData["success"] = "Item has been added to the Shopping Cart";
+                TempData["success"] = "Ürün alýþveriþ sepetinize eklendi.";
                 return RedirectToAction(nameof(Index));
             }
             else

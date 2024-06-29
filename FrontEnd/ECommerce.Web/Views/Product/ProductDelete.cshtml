@@ -1,51 +1,51 @@
 ﻿@model ProductDTO
 
 @{
-    ViewData["Title"] = "Product Delete";
+    ViewData["Title"] = "Ürün Sil";
 }
 
 <form asp-action="ProductDelete">
     <br />
     <div class="container border p-3">
-        <h1 class="text-white text-center">Delete Product</h1>
+        <h1 class="text-white text-center">Ürün Silme Sayfası</h1>
         <input hidden asp-for="ProductId" />
         <hr />
         <div class="row">
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;"> Name</label>
+                <label class="control-label pt-2" style="font-size:20px;"> Adı</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="Name" disabled class="form-control" />
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Category Name</label>
+                <label class="control-label pt-2" style="font-size:20px;">Kategori Adı</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="CategoryName" disabled class="form-control" />
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Description</label>
+                <label class="control-label pt-2" style="font-size:20px;">Açıklama</label>
             </div>
             <div class="col-10 pb-3">
                 <textarea asp-for="Description" disabled class="form-control" rows="5"></textarea>
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">Price</label>
+                <label class="control-label pt-2" style="font-size:20px;">Fiyat</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="Price" disabled class="form-control" />
             </div>
             <div class="col-2">
-                <label class="control-label pt-2" style="font-size:20px;">ImageUrl</label>
+                <label class="control-label pt-2" style="font-size:20px;">Görsel Yolu</label>
             </div>
             <div class="col-10 pb-3">
                 <input asp-for="ImageUrl" disabled class="form-control" />
             </div>
             <div class="col-5 offset-2">
-                <a asp-action="ProductIndex" class="btn-primary btn form-control ">Back to List</a>
+                <a asp-action="ProductIndex" class="btn-primary btn form-control ">Listeye Geri Dön</a>
             </div>
             <div class="col-5">
-                <input type="submit" value="Delete" class="btn btn-danger form-control" />
+                <input type="submit" value="Sil" class="btn btn-danger form-control" />
             </div>
         </div>
         <div>

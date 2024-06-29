@@ -48,7 +48,7 @@ namespace ECommerce.Web.Controllers
 
                 if (response != null && response.IsSuccess)
                 {
-                    TempData["success"] = "Product created successfully.";
+                    TempData["success"] = "Ürün başarıyla oluşturuldu.";
                     return RedirectToAction(nameof(ProductIndex));
                 }
                 else
@@ -84,7 +84,7 @@ namespace ECommerce.Web.Controllers
 
             if (response != null && response.IsSuccess)
             {
-                TempData["success"] = "Product deleted successfully.";
+                TempData["success"] = "Ürün başarıyla silindi.";
                 return RedirectToAction(nameof(ProductIndex));
             }
             else
@@ -119,7 +119,7 @@ namespace ECommerce.Web.Controllers
 
 				if (response != null && response.IsSuccess)
 				{
-					TempData["success"] = "Product updated successfully";
+					TempData["success"] = "Ürün başarıyla güncellendi.";
 					return RedirectToAction(nameof(ProductIndex));
 				}
 				else

@@ -78,7 +78,7 @@ namespace ECommerce.Web.Controllers
                 assignRole = await _authService.AssignRoleAsync(obj);
                 if(assignRole != null && assignRole.IsSuccess)
                 {
-                    TempData["success"] = "Registration Successful";
+                    TempData["success"] = "Başarıyla kayıt oldunuz";
                     return RedirectToAction(nameof(Login));
                 }
             }

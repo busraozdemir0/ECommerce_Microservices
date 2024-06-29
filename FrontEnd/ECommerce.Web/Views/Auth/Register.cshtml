@@ -1,13 +1,13 @@
 ﻿@model RegistrationRequestDTO
 
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Kayıt";
 }
 
 <form method="post">
     <div class="container border p-4">
         <div class="row text-center p-3">
-            <h1>Register</h1>
+            <h1>Kayıt Ol</h1>
         </div>
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3 pb-2">
@@ -15,25 +15,25 @@
                 <span asp-validation-for="Email" class="text-danger" />
             </div>
             <div class="col-12 col-md-6 offset-md-3 pb-2">
-                <input asp-for="Name" class="form-control" placeholder="Name..." />
+                <input asp-for="Name" class="form-control" placeholder="Ad..." />
                 <span asp-validation-for="Name" class="text-danger" />
             </div>
             <div class="col-12 col-md-6 offset-md-3 pb-2">
-                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number..." />
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Telefon Numarası..." />
                 <span asp-validation-for="PhoneNumber" class="text-danger" />
             </div>
             <div class="col-12 col-md-6 offset-md-3 pb-2">
-                <input asp-for="Password" class="form-control" placeholder="Password..." />
+                <input asp-for="Password" class="form-control" placeholder="Parola..." />
                 <span asp-validation-for="Password" class="text-danger" />
             </div>
             <div class="col-12 col-md-6 offset-md-3 pb-2">
                 <select asp-for="Role" class="form-select" asp-items="@ViewBag.RoleList">
-                    <option disabled selected>--Select Role--</option>
+                    <option disabled selected>--Rol Seçin--</option>
                 </select>
             </div>
 
             <div class="col-12 col-md-6 offset-md-3 pb-2">
-                <button type="submit" class="form-control btn btn-success" value="Submit">Register</button>
+                <button type="submit" class="form-control btn btn-success" value="Submit">Kayıt Ol</button>
             </div>
         </div>
     </div>

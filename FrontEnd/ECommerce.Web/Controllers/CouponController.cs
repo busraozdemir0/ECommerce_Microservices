@@ -50,7 +50,7 @@ namespace ECommerce.Web.Controllers
 
                 if (response != null && response.IsSuccess)
                 {
-                    TempData["success"] = "Coupon created successfully.";
+                    TempData["success"] = "Kupon başarıyla oluşturuldu.";
                     return RedirectToAction(nameof(CouponIndex));
                 }
                 else
@@ -86,7 +86,7 @@ namespace ECommerce.Web.Controllers
 
             if (response != null && response.IsSuccess)
             {
-                TempData["success"] = "Coupon deleted successfully.";
+                TempData["success"] = "Kupon başarıyla silindi.";
                 return RedirectToAction(nameof(CouponIndex));
             }
             else
